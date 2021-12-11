@@ -13,7 +13,7 @@ const UberTypes = () => {
     }
     return (
         <SafeAreaView>
-            {types.map(type => <UberTypeRow type={type}/>)}
+            {types.map(type => <UberTypeRow type={type} key={type.id}/>)}
 
             <Pressable onPress={confirm} style={{width:'100%', backgroundColor:'black', padding:10, margin:10, alignItems:'center', marginBottom:10}}>
                 <Text style={{color:'white', fontWeight:'bold'}}>

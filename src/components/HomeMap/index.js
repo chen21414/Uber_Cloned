@@ -25,6 +25,7 @@ function HomeMap() {
             <MapView
                 provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                 style={{width:'100%', height:'100%'}}
+                showUserLocation={true}
                 initialRegion={{
                     latitude: 28.78825,
                     longitude: -16.4324,
@@ -35,11 +36,18 @@ function HomeMap() {
                 
                 {cars.map((car) => (
                       <Marker
+                      key={car.id}
                       coordinate={{latitude:car.latitude, longitude:car.longitude}}
                       >
                       {/* below custom marker to make the car indicator smaller */}
                       <Image 
-                          style={{width:70, height:70, resizeMode: 'contain'}}
+                          style={{
+                              width:70, 
+                              height:70, 
+                              resizeMode: 'contain', 
+                              transform:[{rotate:`${car.heading}deg`
+                            }]
+                        }}
                           source={getImage(car.type)} />
                       </Marker>
                 ))}
